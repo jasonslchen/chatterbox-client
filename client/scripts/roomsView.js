@@ -25,6 +25,7 @@ var RoomsView = {
     $('#rooms select').append(`<option value="${index}">${roomName}</option>`);
     //increase index
     index++;
+    //communicate with server to add a room to drop down list
   },
 
   toggleRoom: function() {

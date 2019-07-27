@@ -11,7 +11,7 @@ var App = {
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
-
+    window.setInterval(MessagesView.reload, 1000);
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
@@ -22,7 +22,7 @@ var App = {
       // examine the response from the server request:
 
       //making a new pointer for rooms to access data
-      Rooms.results = data.results;
+      // Rooms.results = data.results;
       RoomsView.render(data);
       MessagesView.render(data);
       // window.setInterval(MessagesView.render(data), 10000);

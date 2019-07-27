@@ -46,24 +46,31 @@ var RoomsView = {
     //increase index
     this.index++;
     //communicate with server to add a room to drop down list
+    $('#add-room').val('');
   },
+
 
   toggleRoom: function() {
     let selected = $('#rooms select option:selected').text();
     console.log(selected);
-    $(#chat roomname)
+    $('#chats div').show().filter(`:not(.${selected})`).slideUp();
+    // $("#chat").filter(selected).slideUp();
 
-    for (let user of Rooms.results) {
-      if (!(user.roomname === selected)) {
-        //use span class.html
-        //grab text inside span class $(".roomnname").html()
-        //compare and filter
-      }
-    }
-      //on toggle change, read the roomname
-      //filter messages by .roomname
-      //filter .roomname property by name
-      //only show messages from that room
+
+  //   console.log(selected);
+  //   $(#chat roomname)
+
+  //   for (let user of Rooms.results) {
+  //     if (!(user.roomname === selected)) {
+  //       //use span class.html
+  //       //grab text inside span class $(".roomnname").html()
+  //       //compare and filter
+  //     }
+  //   }
+  //     //on toggle change, read the roomname
+  //     //filter messages by .roomname
+  //     //filter .roomname property by name
+  //     //only show messages from that room
   },
 
   DOMtemplate: _.template(`<option value="${this.index}"><%= roomname %></option>`)

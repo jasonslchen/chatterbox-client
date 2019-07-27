@@ -5,12 +5,14 @@ var App = {
   username: 'anonymous',
 
   initialize: function() {
+    //on loading a page, run these functions on page
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
 
+    // RoomsView.render();
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);

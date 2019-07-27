@@ -35,7 +35,7 @@ render: function(serverData) {
     let text = $("#message").val();
     //define message with grabbed text from input field
     var message = {
-      username: 'wj',
+      username: App.username,
       text: text,
       roomname: 'funtimes'
     };

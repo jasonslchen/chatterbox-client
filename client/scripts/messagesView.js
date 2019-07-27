@@ -19,13 +19,15 @@ render: function(serverData) {
     //define html as an empty string
     let html = '';
     //if data includes username and text
-    if (serverData.results[i].username && serverData.results[i].text) {
+    if (serverData.results[i].username && serverData.results[i].text && serverData.results[i].roomname) {
       //sanitize HTML from XSS attacks before rendering to page
       serverData.results[i].text = sanitizeHTML(serverData.results[i].text);
       //add the rendered data to the html string
       html += MessageView.render(serverData.results[i]);
       //prepend html to chats
+      // $(html).addClass(serferData.results[i].roomname);
       this.$chats.prepend(html);
+      //using chats
     }
   }
   },

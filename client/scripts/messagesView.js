@@ -3,59 +3,57 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-   //prepares any pre-sent messages and prepares it on the page
-  //  App.fetch(cb);
-  //probably has something to do with the submit button
+  //if submit button is clicked, invoke renderMessage
   FormView.$form.on('submit', this.renderMessage);
-  //check if there are usernames, texts, roomnnames to take care of edge cases if missing
-
 },
 
 render: function(serverData) {
-  //jquery on submit click
-  //set time out or set interval to get new messages every few seconds
-  for(let i = 0; i < serverData.results.length; i++) {
+  //data is received as an object with one key and the value of the key is an array of all the message objects
+  var sanitizeHTML = function (str) {
+    var temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+  };
+
+  for (let i = 0; i < serverData.results.length; i++) {
+    //define html as an empty string
     let html = '';
+    //if data includes username and text
     if (serverData.results[i].username && serverData.results[i].text) {
+      //sanitize HTML from XSS attacks before rendering to page
+      serverData.results[i].text = sanitizeHTML(serverData.results[i].text);
+      //add the rendered data to the html string
       html += MessageView.render(serverData.results[i]);
-      this.$chats.append(html);
+      //prepend html to chats
+      this.$chats.prepend(html);
     }
   }
-
-
-  // lethtml = "";
-  // for (let i = 0; i < data.results.length; i++) {
-  //   //check for username
-  //   //text
-  //   //if doesnt have all 3, just ignore it.
-  //   if(data.results[i].username && data.results[i].text) {
-
-  //     html += MessageView.render(data.results[i]);
-  //     $('#chats').append(html);
-  //   }
-  // }
-    //use messages.render to convert messages into DOM
-    //use prepend to append DOM to #chat div
-
   },
 
   renderMessage: function() {
+    //grab input from text input field
     let text = $("#message").val();
+    //define message with grabbed text from input field
+    var message = {
+      username: 'wj',
+      text: text,
+      roomname: 'funtimes'
+    };
 
+    //define a new message that will render the new message
+    let newMessage = MessageView.render(message);
+    //prepend the new message to the chat container
+    MessagesView.$chats.prepend(newMessage);
+
+    //call ajax POST to send server the new message
+    Parse.create(message);
+    //erase input from the text input field
+    $("#message").val('');
+    //pass text into object with our username, and room
+    //render it and submit it
+    //pass it to server
 
   }
 
-  // renderMessage: function() {
-  //   //render message for one mssage we type in submission box
-  //   //when we click submit, not only do we render on our screen, but also have to send to server
-  //   // //render
-  //   // let currentMessage;
 
-  //   console.log('hi');
-  // //   $(".submit").on("click", function() {
-  //     currentMessage = $('chats').val();
-  //   })
-  // }
-
-// use parse.create function
 };

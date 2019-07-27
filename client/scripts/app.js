@@ -22,6 +22,7 @@ var App = {
       // examine the response from the server request:
 
       MessagesView.render(data);
+      // window.setInterval(MessagesView.render(data), 10000);
       //call messagesview.render here
       console.log(data);
 

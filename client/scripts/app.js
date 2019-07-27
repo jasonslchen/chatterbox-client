@@ -12,7 +12,7 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
 
-    // RoomsView.render();
+    RoomsView.render();
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);

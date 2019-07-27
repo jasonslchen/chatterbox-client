@@ -10,10 +10,10 @@ var RoomsView = {
 
   render: function() {
     //add rooms to dropdown list already in memory
-    // this.$select.append('<option value="1">New Room</option><option value="2">Fun Times</option><option value="3">Not Fun Times</option><option value="4">Mediocre Times</option>');
+    this.$select.append('<option value="1">New Room</option><option value="2">Fun Times</option><option value="3">Not Fun Times</option><option value="4">Mediocre Times</option>');
 
     //add a text field and make new room button to container
-    // $('#rooms').append('<input type="text" name="message" id="message"/><input type="submit" value="Make New Room" class="make-new-room"/>');
+    // $('#rooms').append('<input type="text" name="message" id="message"/>');
   },
 
   renderRoom: function() {

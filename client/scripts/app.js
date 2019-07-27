@@ -20,6 +20,7 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
+      Messages.results = data.results;
       console.log(data);
 
       callback();

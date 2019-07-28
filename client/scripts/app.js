@@ -12,7 +12,7 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
     Friends.initialize();
-    window.setInterval(MessagesView.reload, 10000);
+    window.setInterval(MessagesView.reload, 3000);
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);

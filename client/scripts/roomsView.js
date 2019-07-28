@@ -6,7 +6,7 @@ var RoomsView = {
 
   initialize: function() {
     //if add room button is clicked, invoke renderRoom
-    this.$button.on('click', this.renderRoom);
+    this.$button.on('click', Rooms.add);
 
     //initalize on change event run (toggleRoom)
     this.$select.change(this.toggleRoom);

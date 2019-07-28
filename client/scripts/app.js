@@ -11,7 +11,8 @@ var App = {
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
-    window.setInterval(MessagesView.reload, 1000);
+    Friends.initialize();
+    window.setInterval(MessagesView.reload, 10000);
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
